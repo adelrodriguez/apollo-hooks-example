@@ -24,7 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "json-graphql-server src/content/db.js --p 8000",
-    "schema": "get-graphql-schema http://localhost:8000/ > src/utils/graphql/schema.txt"
+    "schema": "get-graphql-schema http://localhost:8000/ > src/utils/graphql/schema.txt",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +45,10 @@
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.1",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "get-graphql-schema": "^2.1.2",
