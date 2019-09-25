@@ -1,0 +1,52 @@
+type ListMetadata {
+  count: Int
+}
+
+type Mutation {
+  createUser(id: ID!, name: String!): User
+  updateUser(id: ID!, name: String): User
+  removeUser(id: ID!): Boolean
+  createTodo(id: ID!, user_id: ID!, task: String!, done: Boolean!): Todo
+  updateTodo(id: ID!, user_id: ID, task: String, done: Boolean): Todo
+  removeTodo(id: ID!): Boolean
+}
+
+type Query {
+  User(id: ID!): User
+  allUsers(page: Int, perPage: Int, sortField: String, sortOrder: String, filter: UserFilter): [User]
+  _allUsersMeta(page: Int, perPage: Int, filter: UserFilter): ListMetadata
+  Todo(id: ID!): Todo
+  allTodos(page: Int, perPage: Int, sortField: String, sortOrder: String, filter: TodoFilter): [Todo]
+  _allTodosMeta(page: Int, perPage: Int, filter: TodoFilter): ListMetadata
+}
+
+type Todo {
+  id: ID!
+  user_id: ID!
+  task: String!
+  done: Boolean!
+  User: User
+}
+
+input TodoFilter {
+  q: String
+  ids: [ID]
+  id: ID
+  user_id: ID
+  task: String
+  done: Boolean
+}
+
+type User {
+  id: ID!
+  name: String!
+  Todos: [Todo]
+}
+
+input UserFilter {
+  q: String
+  ids: [ID]
+  id: ID
+  name: String
+}
+

@@ -4,7 +4,7 @@ import { FETCH_USERS } from '../../graphql/queries';
 import { REMOVE_USER } from '../../graphql/mutations';
 import UsersListItem from './UsersListItem';
 
-export default function ({ user }) {
+export default function({ user }) {
   function update(cache) {
     const { allUsers } = cache.readQuery({ query: FETCH_USERS });
 
@@ -19,10 +19,5 @@ export default function ({ user }) {
     update,
   });
 
-  return (
-    <UsersListItem
-      user={user}
-      onRemove={removeUser}
-    />
-  );
+  return <UsersListItem user={user} onRemove={removeUser} />;
 }

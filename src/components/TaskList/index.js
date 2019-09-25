@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { FETCH_USER_TODOS } from '../../graphql/queries';
+import { FETCH_USER_TODOS, FETCH_USER } from '../../graphql/queries';
 import { UPDATE_TODO } from '../../graphql/mutations';
 import { useCreateTodo } from '../../hooks';
 import { mapTasks } from './mapping';
@@ -11,7 +11,9 @@ export default function({ user }) {
     variables: { id: user.id },
   });
 
-  const [updateTodo] = useMutation(UPDATE_TODO);
+  const [updateTodo] = useMutation(UPDATE_TODO, {
+    refetchQueries: [{ query: FETCH_USER, variables: { id: user.id } }],
+  });
   const createTodo = useCreateTodo(user.id);
 
   return (

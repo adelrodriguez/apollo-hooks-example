@@ -12,6 +12,18 @@ export const FETCH_USERS = gql`
   }
 `;
 
+export const FETCH_USER = gql`
+  query FetchUser($id: ID!) {
+    User(id: $id) {
+      id
+      name
+      Todos {
+        done
+      }
+    }
+  }
+`;
+
 export const FETCH_USER_TODOS = gql`
   query FetchUserTodos($id: ID!) {
     allTodos(filter: { user_id: $id }) {
@@ -25,6 +37,7 @@ export const FETCH_USER_TODOS = gql`
 export default {
   // User queries
   FETCH_USERS,
+  FETCH_USER,
   // Todos queries
   FETCH_USER_TODOS,
 };
