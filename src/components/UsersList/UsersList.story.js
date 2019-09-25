@@ -4,6 +4,8 @@ import withMockedProvider from '../../utils/graphql/withMockedProvider';
 
 const users = [{ id: '0', name: 'Lorem Ipsum', pending: 0 }];
 
-export const UI = () => withMockedProvider(<UsersList users={users} />, []);
+export const withoutUsers = () => withMockedProvider(<UsersList />, []);
 
-export default { title: 'UsersList' };
+export const withUsers = () => withMockedProvider(<UsersList users={users} />, []);
+
+export default { title: 'Users/UsersList' };
